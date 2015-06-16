@@ -8,13 +8,11 @@ class Lista {
 
 	friend ostream & operator<<(ostream &, Lista &);
 
-private:
+protected:
 
 	Elemento * cabeza;
 	Elemento * cola;
 	int size;
-
-public:
 
 	Lista();
 	virtual ~Lista();
@@ -24,12 +22,13 @@ public:
 	void removerCabeza();
 	void removerCola();
 	void removerElemento(int); // Remueve un elemento de la lista según una posición.
+	void retrocederCola(); // Mueve la cola al Elemento anterior.
 	int getSize(); // Devuelve el tamaño de la lista (cantidad de elementos).
 	int buscarPorElemento(Elemento *); // Busca un elemento en la lista y deuelve la posición donde lo encontró (El primero que encuentra).
 	Elemento * buscarPorPosicion(int); // Devuelve el Elemento según una posición.
+	virtual void imprimir(Elemento *, ostream &); // Devuelve un out que sirve para imprimir la lista.
 
 private:
-	void imprimir(Elemento *, ostream &); // Devuelve un out que sirve para imprimir la lista.
 	void destruirLista(); // Destruye la lista.
 };
 

@@ -13,6 +13,7 @@ Lista::~Lista(){
 	if (cabeza != NULL) {
 		destruirLista();
 	}
+	cout << "Destructor de la Lista" << endl;
 }
 
 void Lista::insertarCabeza(Elemento * nodo){
@@ -126,6 +127,24 @@ void Lista::removerElemento(int donde){
 	}
 }
 
+void Lista::retrocederCola(){
+	if (cola != NULL){
+		if (size == 1){ // Si solo hay un Elemento vuelve al estado inicial.
+			cola = NULL;
+			cabeza = NULL;
+		}
+		else{ // Sino avanza hasta el penúltimo Elemento y lo asigana como cola.
+			Elemento * actual = cabeza;
+			for (int i = 0; i < size - 2; i++){
+				actual = actual->getNext();
+			}
+			cola = actual;
+			cola->setNext(NULL);
+		}
+		size--;
+	}
+}
+
 int Lista::buscarPorElemento(Elemento * nodo){
 	bool encontrado = false;
 	int posicion = -1; // Posición a devolver, si no lo encuentra devuelve un -1.
@@ -168,7 +187,7 @@ ostream & operator<<(ostream & out, Lista & l) {
 	return out;
 }
 
-void Lista::imprimir(Elemento* nodo, ostream& out){
+void Lista::imprimir(Elemento* nodo, ostream& out) {
 	Elemento* actual = nodo;
 	while (actual->getNext() != NULL){
 		out << *actual << endl;
