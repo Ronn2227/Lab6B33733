@@ -13,7 +13,6 @@ Lista::~Lista(){
 	if (cabeza != NULL) {
 		destruirLista();
 	}
-	cout << "Destructor de la Lista" << endl;
 }
 
 void Lista::insertarCabeza(Elemento * nodo){

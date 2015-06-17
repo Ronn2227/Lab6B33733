@@ -7,7 +7,6 @@ Pila::Pila() : Lista(){
 
 
 Pila::~Pila(){ // Llama automaticamente al desctructor de la lista que se destruye todo.
-	cout << "destructor de pila" << endl;
 }
 
 void Pila::push(Elemento * nodo){ // Siempre se inserta en la cola (se toma la cola como primer elemento).
@@ -20,7 +19,7 @@ Elemento * Pila::peek(){ // Devuelve el primer elemento (el último que se agrego
 
 Elemento * Pila::pop(){ // Devuelve el primer elemento y lo remueve de la pila. 
 	Elemento * temp = cola;
-	retrocederCola();
+	retrocederCola(); // Mueve la cola al anterior para desreferenciarla de la pila, quien hace el pop se encarga de eliminar ese elemento despues (El profe me dejó hacer esto)
 	return temp;
 }
 
